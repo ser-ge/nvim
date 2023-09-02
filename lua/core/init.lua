@@ -1,9 +1,7 @@
-require("theprimeagen.set")
-require("theprimeagen.remap")
-
--- DO NOT INCLUDE THIS
-vim.opt.rtp:append("~/personal/streamer-tools")
--- DO NOT INCLUDE THIS
+require("core.set")
+require("core.remap")
+require("core.plugs")
+-- this file can be loaded by calling `lua require('plugins')` from your init.vim
 
 local augroup = vim.api.nvim_create_augroup
 local ThePrimeagenGroup = augroup('ThePrimeagen', {})

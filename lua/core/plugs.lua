@@ -7,6 +7,24 @@ return require('packer').startup(function(use)
     --
     use 'wbthomason/packer.nvim'
 
+    use 'vimwiki/vimwiki'
+
+    use 'projekt0n/github-nvim-theme'
+
+    use 'ThePrimeagen/git-worktree.nvim'
+
+    use {
+        "jackMort/ChatGPT.nvim",
+        config = function()
+            require("chatgpt").setup()
+        end,
+        requires = {
+            "MunifTanjim/nui.nvim",
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim"
+        }
+    }
+
     use "sindrets/diffview.nvim"
 
     use 'tpope/vim-commentary'
@@ -16,7 +34,7 @@ return require('packer').startup(function(use)
     use "ribru17/bamboo.nvim"
 
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        'nvim-telescope/telescope.nvim', tag = '0.1.4',
         -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
@@ -62,6 +80,8 @@ return require('packer').startup(function(use)
             { 'neovim/nvim-lspconfig' },
             { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' },
+            { "jose-elias-alvarez/null-ls.nvim" },
+            { "jay-babu/mason-null-ls.nvim" },
 
             -- Autocompletion
             { 'hrsh7th/nvim-cmp' },

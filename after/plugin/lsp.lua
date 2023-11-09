@@ -1,26 +1,27 @@
-local lsp = require("lsp-zero")
-local luasnip = require 'luasnip'
+    local lsp = require("lsp-zero")
+    local luasnip = require 'luasnip'
 
-lsp.preset("recommended")
+    lsp.preset("recommended")
 
-lsp.ensure_installed({
-  'tsserver',
-  'rust_analyzer',
-})
+    lsp.ensure_installed({
+      'tsserver',
+      'rust_analyzer',
 
--- Fix Undefined global 'vim'
-lsp.nvim_workspace()
+    })
 
-
-local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
+    -- Fix Undefined global 'vim'
+    lsp.nvim_workspace()
 
 
-cmp.setup {
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
+    local cmp = require('cmp')
+    local cmp_select = {behavior = cmp.SelectBehavior.Select}
+
+
+    cmp.setup {
+      snippet = {
+        expand = function(args)
+          luasnip.lsp_expand(args.body)
+        end,
   },
   mapping = cmp.mapping.preset.insert {
     ['<C-n>'] = cmp.mapping.select_next_item(),

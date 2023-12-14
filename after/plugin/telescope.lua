@@ -11,3 +11,8 @@ vim.keymap.set('n', '<leader>ps', function()
 end)
 
 
+-- builtin.load_extension("git_worktree")
+require("telescope").load_extension("git_worktree")
+vim.keymap.set("n", "<leader>gl", function() require("telescope").extensions.git_worktree.git_worktrees() end)
+vim.keymap.set("n", "<leader>gn", function() require("telescope").extensions.git_worktree.create_git_worktree() end)
+

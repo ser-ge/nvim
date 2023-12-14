@@ -5,6 +5,8 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     --
     --
+    use 'towolf/vim-helm'
+
     use 'wbthomason/packer.nvim'
 
     use 'vimwiki/vimwiki'

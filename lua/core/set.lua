@@ -33,6 +33,31 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
 
+
+-- Retrieve the current status line
+local current_statusline = vim.opt.statusline:get()
+
+-- Append a custom element to the status line
+local new_statusline = current_statusline .. " %{FugitiveStatusline()}"
+
+-- -- Prepend a custom element to the status line
+-- new_statusline = "%{MyOtherCustomFunction()}" .. new_statusline
+
+-- Set the new status line
+vim.opt.statusline = new_statusline
+
+-- auto yank to clipboard
+vim.api.nvim_create_autocmd("TextYankPost", {
+    callback = function()
+        if vim.v.event.operator == "y" and vim.v.event.regtype ~= "" then
+            vim.fn.setreg('+', vim.fn.getreg('"'))
+            vim.fn.setreg('*', vim.fn.getreg('"'))
+        end
+    end
+})
+
+
+
 -- local o = vim.opt
 
 -- -- o.number         = true -- enable line number

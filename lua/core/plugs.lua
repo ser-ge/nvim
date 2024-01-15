@@ -4,7 +4,14 @@ vim.cmd.packadd('packer.nvim')
 return require('packer').startup(function(use)
     -- Packer can manage itself
     --
-    --
+
+    use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+        {"nvim-lua/plenary.nvim"},
+        {"nvim-treesitter/nvim-treesitter"}
+    }
+    }
     use 'towolf/vim-helm'
 
     use 'wbthomason/packer.nvim'
@@ -62,7 +69,6 @@ return require('packer').startup(function(use)
         end, }
     use("nvim-treesitter/playground")
     use("theprimeagen/harpoon")
-    use("theprimeagen/refactoring.nvim")
     use("mbbill/undotree")
     use("tpope/vim-fugitive")
     use("nvim-treesitter/nvim-treesitter-context");

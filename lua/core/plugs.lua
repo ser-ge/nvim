@@ -4,13 +4,69 @@ vim.cmd.packadd('packer.nvim')
 return require('packer').startup(function(use)
     -- Packer can manage itself
     --
+    -- use({
+    --   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    --   config = function()
+    --     require("lsp_lines").setup()
+    --     vim.diagnostic.config({virtual_text = false,})
+    --   end,
+    -- })
+    --
+
+    use {"lukas-reineke/lsp-format.nvim"}
+    use {"chentoast/marks.nvim"}
 
     use {
-    "ThePrimeagen/refactoring.nvim",
-    requires = {
-        {"nvim-lua/plenary.nvim"},
-        {"nvim-treesitter/nvim-treesitter"}
+        'mrcjkb/rustaceanvim',
+        version = '^4', -- Recommended
+        ft = { 'rust' },
     }
+    use {
+        "tpope/vim-dadbod",
+        opt = true,
+        requires = {
+            "kristijanhusak/vim-dadbod-ui",
+            "kristijanhusak/vim-dadbod-completion",
+        },
+        config = function()
+            require("config.dadbod").setup()
+        end,
+        cmd = { "DBUIToggle", "DBUI", "DBUIAddConnection", "DBUIFindBuffer", "DBUIRenameBuffer", "DBUILastQueryInfo" },
+    }
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
+    use { "ibhagwan/fzf-lua",
+        -- optional for icon support
+        requires = { "nvim-tree/nvim-web-devicons" }
+    }
+    use {
+        "aaronhallaert/advanced-git-search.nvim",
+        config = function()
+            require("advanced_git_search.fzf").setup {}
+        end,
+
+        requires = {
+            {
+                "nvim-telescope/telescope.nvim",
+                -- to show diff splits and open commits in browser
+                "tpope/vim-fugitive",
+                -- to open commits in browser with fugitive
+                "tpope/vim-rhubarb",
+                -- optional: to replace the diff from fugitive with diffview.nvim
+                -- (fugitive is still needed to open in browser)
+                -- "sindrets/diffview.nvim",
+            }
+        }
+    }
+
+    use {
+        "ThePrimeagen/refactoring.nvim",
+        requires = {
+            { "nvim-lua/plenary.nvim" },
+            { "nvim-treesitter/nvim-treesitter" }
+        }
     }
     use 'towolf/vim-helm'
 
@@ -49,6 +105,9 @@ return require('packer').startup(function(use)
     }
 
     use { "ellisonleao/gruvbox.nvim" }
+    use { "sainnhe/gruvbox-material" }
+    use { 'luisiacc/gruvbox-baby' }
+
     use({
         "folke/trouble.nvim",
         config = function()
@@ -88,7 +147,7 @@ return require('packer').startup(function(use)
             { 'neovim/nvim-lspconfig' },
             { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' },
-            { "jose-elias-alvarez/null-ls.nvim" },
+            { "nvimtools/none-ls.nvim" },
             { "jay-babu/mason-null-ls.nvim" },
 
             -- Autocompletion
@@ -105,10 +164,7 @@ return require('packer').startup(function(use)
         }
     }
 
-    use("folke/zen-mode.nvim")
     use("github/copilot.vim")
-    use("eandrju/cellular-automaton.nvim")
-    use("laytan/cloak.nvim")
     -- if packer_bootstrap then
     -- require('packer').sync()
     --
@@ -148,4 +204,8 @@ return require('packer').startup(function(use)
         --     { "<leader>du", ": lua require'dapui'.toggle()<cr>",         desc = "debug into" },
         -- },
     }
+
+    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = {
+            "markdown" } end, ft = { "markdown" }, })
+    use { "nvim-neotest/nvim-nio" }
 end)

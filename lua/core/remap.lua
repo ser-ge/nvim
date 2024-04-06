@@ -58,5 +58,7 @@ vim.keymap.set("n", "<leader>m", ":NeoTreeRevealToggle<CR>");
 vim.keymap.set("i", "kkk", "# %%<CR>");
 vim.keymap.set("i", "bbb", "breakpoint()<Esc>");
 
+vim.keymap.set("i", "<C-g>", "<c-g>u<Esc>[s1z=`]a<c-g>u");
 
 vim.keymap.set("n", "<leader>c", ":ChatGPTEditWithInstructions <CR>" )
+

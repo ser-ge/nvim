@@ -13,8 +13,12 @@ return require('packer').startup(function(use)
     -- })
     --
 
-    use {"lukas-reineke/lsp-format.nvim"}
-    use {"chentoast/marks.nvim"}
+    use {
+        "ray-x/lsp_signature.nvim",
+    }
+
+    use { "lukas-reineke/lsp-format.nvim" }
+    use { "chentoast/marks.nvim" }
 
     use {
         'mrcjkb/rustaceanvim',
@@ -205,7 +209,14 @@ return require('packer').startup(function(use)
         -- },
     }
 
-    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = {
-            "markdown" } end, ft = { "markdown" }, })
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = "cd app && npm install",
+        setup = function()
+            vim.g.mkdp_filetypes = {
+                "markdown" }
+        end,
+        ft = { "markdown" },
+    })
     use { "nvim-neotest/nvim-nio" }
 end)

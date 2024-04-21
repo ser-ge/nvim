@@ -2,17 +2,14 @@
 vim.cmd.packadd('packer.nvim')
 
 return require('packer').startup(function(use)
-    -- Packer can manage itself
-    --
-    -- use({
-    --   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    --   config = function()
-    --     require("lsp_lines").setup()
-    --     vim.diagnostic.config({virtual_text = false,})
-    --   end,
-    -- })
-    --
+    use 'pwntester/octo.nvim'
+    use {
+        "cbochs/grapple.nvim",
+        requires = { "nvim-tree/nvim-web-devicons" }
+    }
 
+
+    use "stevearc/oil.nvim"
     use {
         "ray-x/lsp_signature.nvim",
     }
@@ -112,6 +109,13 @@ return require('packer').startup(function(use)
     use { "sainnhe/gruvbox-material" }
     use { 'luisiacc/gruvbox-baby' }
 
+    use { "folke/todo-comments.nvim" }
+
+    use {
+        "folke/which-key.nvim",
+    }
+
+    use 'Olical/conjure'
     use({
         "folke/trouble.nvim",
         config = function()
@@ -173,30 +177,13 @@ return require('packer').startup(function(use)
     -- require('packer').sync()
     --
 
-    use({
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v2.x",
-        requires = {
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-            "nvim-tree/nvim-web-devicons",
-        },
-    })
-
-
     use { "nvim-neotest/neotest",
         requires = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
-            "antoinemadec/FixCursorHold.nvim"
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-neotest/neotest-python",
         },
-        -- keys = {
-        --     { "<leader>dtt", ":lua require'neotest'.run.run({strategy = 'dap'})<cr>", desc = "test" },
-        --     { "<leader>dts", ":lua require'neotest'.run.stop()<cr>",                  desc = "stop test" },
-        --     { "<leader>dta", ":lua require'neotest'.run.attach()<cr>",                desc = "attach test" },
-        --     { "<leader>dtf", ":lua require'neotest'.run.run(vim.fn.expand('%'))<cr>", desc = "test file" },
-        --     { "<leader>dts", ":lua require'neotest'.summary.toggle()<cr>",            desc = "test summary" },
-        -- }
 
     }
 

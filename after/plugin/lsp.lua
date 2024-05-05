@@ -3,10 +3,44 @@ local luasnip = require 'luasnip'
 
 lsp.preset("recommended")
 
-lsp.ensure_installed({
-    'tsserver',
-    'rust_analyzer',
+-- lsp.ensure_installed({
+--     'tsserver',
+--     'rust_analyzer',
 
+-- })
+
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+    -- Replace the language servers listed here
+    -- with the ones you want to install
+    ensure_installed = { 'tsserver', 'rust_analyzer' },
+    handlers = {
+        function(server_name)
+            require('lspconfig')[server_name].setup({})
+        end,
+
+        pyright = function()
+            require('lspconfig').pyright.setup({
+                settings = {
+                    python = {
+                        pythonPath = vim.fn.exepath("python3"),
+                    },
+                },
+            })
+        end,
+
+        basedpyright = function()
+            require('lspconfig').pyright.setup({
+                settings = {
+                    python = {
+                        pythonPath = vim.fn.exepath("python3"),
+                    },
+                },
+            })
+        end,
+
+    }
 })
 
 -- Fix Undefined global 'vim'

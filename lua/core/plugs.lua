@@ -2,7 +2,19 @@
 vim.cmd.packadd('packer.nvim')
 
 return require('packer').startup(function(use)
+    use 'gabrielpoca/replacer.nvim'
+    use({
+        "dnlhc/glance.nvim",
+        config = function()
+            require('glance').setup({
+                -- your configuration
+            })
+        end,
+    })
     use 'pwntester/octo.nvim'
+
+    -- lazy.nvim
+    use "robitx/gp.nvim"
     use {
         "cbochs/grapple.nvim",
         requires = { "nvim-tree/nvim-web-devicons" }

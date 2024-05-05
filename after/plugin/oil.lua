@@ -5,10 +5,10 @@ require("oil").setup({
     -- Id is automatically added at the beginning, and name at the end
     -- See :help oil-columns
     columns = {
-        "icon",
+        -- "icon",
         -- "permissions",
-        -- "size",
-        -- "mtime",
+        "size",
+        "mtime",
     },
     -- Buffer-local options to use for oil buffers
     buf_options = {
@@ -27,9 +27,9 @@ require("oil").setup({
         concealcursor = "nvic",
     },
     -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
-    delete_to_trash = false,
+    delete_to_trash = true,
     -- Skip the confirmation popup for simple operations (:help oil.skip_confirm_for_simple_edits)
-    skip_confirm_for_simple_edits = false,
+    skip_confirm_for_simple_edits = true,
     -- Selecting a new/moved/renamed file or directory will prompt you to save changes first
     -- (:help prompt_save_on_select_new_entry)
     prompt_save_on_select_new_entry = true,
@@ -59,7 +59,7 @@ require("oil").setup({
         ["g?"] = "actions.show_help",
         ["<CR>"] = "actions.select",
         ["<C-s>"] = "actions.select_vsplit",
-        ["<C-h>"] = "actions.select_split",
+        ["<C-v>"] = "actions.select_split",
         ["<C-t>"] = "actions.select_tab",
         ["<C-p>"] = "actions.preview",
         ["<C-c>"] = "actions.close",
@@ -81,7 +81,7 @@ require("oil").setup({
     use_default_keymaps = true,
     view_options = {
         -- Show files and directories that start with "."
-        show_hidden = false,
+        show_hidden = true,
         -- This function defines what is considered a "hidden" file
         is_hidden_file = function(name, bufnr)
             return vim.startswith(name, ".")

@@ -24,7 +24,7 @@ require('mason-lspconfig').setup({
             require('lspconfig').pyright.setup({
                 settings = {
                     python = {
-                        pythonPath = vim.fn.exepath("python3"),
+                        pythonPath = vim.fn.exepath("python"),
                     },
                 },
             })

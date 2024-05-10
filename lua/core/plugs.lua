@@ -27,6 +27,8 @@ return require('packer').startup(function(use)
     }
 
     use { "lukas-reineke/lsp-format.nvim" }
+    use { 'echasnovski/mini.nvim', version = '*' }
+
     use { "chentoast/marks.nvim" }
 
     use {
@@ -127,7 +129,6 @@ return require('packer').startup(function(use)
         "folke/which-key.nvim",
     }
 
-    use 'Olical/conjure'
     use({
         "folke/trouble.nvim",
         config = function()

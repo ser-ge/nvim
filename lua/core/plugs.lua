@@ -2,6 +2,7 @@
 vim.cmd.packadd('packer.nvim')
 
 return require('packer').startup(function(use)
+    use 'wbthomason/packer.nvim'
     use 'gabrielpoca/replacer.nvim'
     use({
         "dnlhc/glance.nvim",
@@ -85,7 +86,6 @@ return require('packer').startup(function(use)
     }
     use 'towolf/vim-helm'
 
-    use 'wbthomason/packer.nvim'
 
     use 'vimwiki/vimwiki'
 

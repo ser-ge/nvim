@@ -329,6 +329,25 @@ local config = {
             )
         end,
 
+        Doctring = function(gp, params)
+            local template = "Having following from {{filename}}:\n\n"
+                .. "```{{filetype}}\n{{selection}}\n```\n\n"
+                .. "Please write a numpy style doctring for the function or class."
+                .. "\n\nRespond exclusively with the doctring surronded by \"\"\""
+
+            local agent = gp.get_command_agent()
+            gp.info("Implementing selection with agent: " .. agent.name)
+
+            gp.Prompt(
+                params,
+                gp.Target.append,
+                nil, -- command will run directly without any prompting for user input
+                agent.model,
+                template,
+                agent.system_prompt
+            )
+        end,
+
         -- your own functions can go here, see README for more examples like
         -- :GpExplain, :GpUnitTests.., :GpTranslator etc.
 

@@ -7,4 +7,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
     execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
 end
 execute 'packadd packer.nvim'
+
+
 require("core")

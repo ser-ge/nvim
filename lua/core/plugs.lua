@@ -5,6 +5,11 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use 'gabrielpoca/replacer.nvim'
     use({
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = "nvim-treesitter",
+        requires = "nvim-treesitter/nvim-treesitter",
+    })
+    use({
         "dnlhc/glance.nvim",
         config = function()
             require('glance').setup({
@@ -148,7 +153,6 @@ return require('packer').startup(function(use)
             ts_update()
         end, }
     use("nvim-treesitter/playground")
-    use("theprimeagen/harpoon")
     use("mbbill/undotree")
     use("tpope/vim-fugitive")
     use("nvim-treesitter/nvim-treesitter-context");
@@ -199,6 +203,8 @@ return require('packer').startup(function(use)
         },
 
     }
+
+    use { 'kevinhwang91/nvim-bqf', ft = 'qf' }
 
     use { "mfussenegger/nvim-dap",
         requires = { "rcarriga/nvim-dap-ui", 'mfussenegger/nvim-dap-python', 'theHamsta/nvim-dap-virtual-text' },
